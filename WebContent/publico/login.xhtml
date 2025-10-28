@@ -12,12 +12,6 @@
 	<h:outputScript name="scripty.js" library="javascript" />
 </h:head>
 
-<!-- Apocalipse 1:8:Eu sou o Alfa e o Ômega, diz o Senhor Deus, 
-         aquele que é, que era e que há de vir, o Todo-Poderoso -->
-
-<!-- João 14:6: Respondeu-lhe Jesus: Eu sou o caminho, e a verdade, e a vida; 
-                 ninguém vem ao Pai senão por mim. -->
-
 <h:body>
 
 	<div id="imagemlogin">
@@ -30,8 +24,6 @@
 	<div id="formlogin">
 		<br />
 		<h:panelGroup rendered="#{!empty param.login_error}">
-
-			<!--Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}  -->
 
 			<h:outputLabel
 				rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
