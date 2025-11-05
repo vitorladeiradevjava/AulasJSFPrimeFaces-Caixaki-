@@ -20,7 +20,7 @@ public class SessionControllerImpl implements SessionController {
 	@Override
 	public void invalidateSession(String keyLoginUser) {
 		HttpSession session = hashMap.get(keyLoginUser);
-		if (session != null){
+		if (session != null){ //Remove sessão do usuário passando como parâmetros
 			try {
 				session.invalidate();
 			}catch (Exception e) {}
