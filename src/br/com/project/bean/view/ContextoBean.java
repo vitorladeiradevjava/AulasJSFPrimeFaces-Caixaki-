@@ -77,7 +77,8 @@ public class ContextoBean implements Serializable{
 				entidadeController.updateUltimoAcessoUser(getAuthentication().getName());
 				entidade = entidadeController.findUserLogado(getAuthentication().getName());
 				getExternalContext().getSessionMap().put(USER_LOGADO_SESSAO, entidade);
-				sessionController.addSession(entidade.getEnt_login(), (HttpSession) getExternalContext().getSession(false));
+				sessionController.addSession(entidade.getEnt_login(), 
+						(HttpSession) getExternalContext().getSession(false));
 			}
 		}
 		return entidade;
