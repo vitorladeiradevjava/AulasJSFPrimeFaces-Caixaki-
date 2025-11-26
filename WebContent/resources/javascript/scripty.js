@@ -170,29 +170,29 @@ function ocultarMenu() {
     PrimeFaces.locales['pt'] = {
         closeText : 'Fechar',
         prevText : 'Anterior',
-        nextText : 'Próximo', // Corrigido: Próximo
-        currentText : 'Começo', // Corrigido: Começo
-        monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', // Corrigido: Março
+        nextText : 'Próximo', 
+        currentText : 'Começo', 
+        monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 
                 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
                 'Dezembro' ],
         monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul',
                 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-        dayNames : [ 'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', // Corrigido: Terça-feira (com hífen e acento), adicionado -feira
-                'Sexta-feira', 'Sábado' ], // Corrigido: Sábado (com acento), adicionado -feira
-        dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ], // Sugestão: Sáb (com acento para Sábado)
+        dayNames : [ 'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 
+                'Sexta-feira', 'Sábado' ], 
+        dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ], 
         dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
         weekHeader : 'Semana',
         firstDay : 0,
         isRTL : false,
         showMonthAfterYear : false,
         yearSuffix : '',
-        timeOnlyTitle : 'Só Horas', // Sugestão para 'Sao Horas'
-        timeText : 'Hora', // Sugestão para 'Tempo'
+        timeOnlyTitle : 'Só Horas', 
+        timeText : 'Hora', 
         hourText : 'Hora',
         minuteText : 'Minuto',
         secondText : 'Segundo',
         ampm : false,
-        month : 'Mês', // Sugestão: Mês (com acento)
+        month : 'Mês', 
         week : 'Semana',
         day : 'Dia',
         allDayText : 'Todo o Dia'
