@@ -1,4 +1,4 @@
-var arrayIdsElementsPage = new Array;
+var arrayIdsElementsPage = new Array(); // Melhor prática: usar '()'
 var idundefined = 'idundefined';
 var classTypeString = 'java.lang.String';
 var classTypeLong = 'java.lang.Long';
@@ -10,12 +10,11 @@ function reloadPage() {
 	$(function() {
 		location.reload();
 	});
-	
 }	
 
 function validaDescricao(descricao) {
 	if (descricao === ' ' || descricao.trim() === '') {
-		return "Descri��o n�o foi informada.";
+		return "Descrição não foi informada."; // CORRIGIDO: Descrição não
 	}
 	 else {
 		return descricao;
@@ -23,43 +22,42 @@ function validaDescricao(descricao) {
 }
 
 
-// invalida a sess�o do spring security
+// invalida a sesão do spring security
 function logout(contextPath) {
 	
-	document.location =	 contextPath + '/j_spring_security_logout';
+	document.location = contextPath + '/j_spring_security_logout';
 	var post = 'invalidar_session';
 	$.ajax(
-		{ 
-		  type: "POST", 
-		  url: post
+		{
+		 type: "POST",
+		 url: post
 		});
 }
 
 /**
  * Usada apenas para o menu do sistema Limpar variaveis por ajax e redireciona
  * sempre a pagina
- * 
- * @param context
+ * * @param context
  * @param pagina
  * @param post
  */
-function redirecionarPage(context, pagina, post) { 
+function redirecionarPage(context, pagina, post) {
 	pagina = pagina + post + ".jsf";
 	$.ajax(
 			{ type: "POST",
 			  url: post
-			}).always(function(resposta) { 
+			}).always(function(resposta) {
 					document.location = context + pagina;
 			});
 }
 
-function redirecionarPagina(context, pagina) { 
+function redirecionarPagina(context, pagina) {
 	pagina = pagina + ".jsf";
 	document.location = context + pagina;
 }
 
-function invalidarSession(context, pagina) { 
-     document.location = (context + pagina + ".jsf");
+function invalidarSession(context, pagina) {
+	 document.location = (context + pagina + ".jsf");
 }
 
 function permitNumber(e) {
@@ -94,11 +92,11 @@ function permitDecimal(e) {
 	}
 }
 
-function addMascaraDecimalMonetaria(id) { 
+function addMascaraDecimalMonetaria(id) {
 	var id = getValorElementPorId(id);
 	if (id != idundefined) {
 		jQuery(function($){
-			$("#"+id).maskMoney({precision:2, decimal:",", thousands:"."}); 
+			$("#"+id).maskMoney({precision:2, decimal:",", thousands:"."});
 		});	
 	}
 	
@@ -126,37 +124,37 @@ function validarSenhaLogin() {
 
 function initTamplete() {
 $(document).ready(function() {
-	  $('#menupop').hide();
-	  $('#barramenu').hide();
-	  $('#barramenu').css("left", "-200px");
-	  $('#iniciarmenu').click(function() {
-	  	if ($('#barramenu').is(':visible')) {
-	  	  ocultarMenu();
-	  	} else {
-	  	  $('#barramenu').show();
-	  	  $('#barramenu').animate({"left":"0px"}, "slow");	
-	  	}
-	  });
+	 $('#menupop').hide();
+	 $('#barramenu').hide();
+	 $('#barramenu').css("left", "-200px");
+	 $('#iniciarmenu').click(function() {
+	 	if ($('#barramenu').is(':visible')) {
+	 	  ocultarMenu();
+	 	} else {
+	 	  $('#barramenu').show();
+	 	  $('#barramenu').animate({"left":"0px"}, "slow");	
+	 	}
+	 });
 	});
 }
 
 
 function ocultarMenu() {
-	  $('#barramenu').animate({"left":"-200px"}, "slow", function() {
-	  	$('#barramenu').hide();
-	  });
+	 $('#barramenu').animate({"left":"-200px"}, "slow", function() {
+	 	$('#barramenu').hide();
+	 });
 	}
 	
 	function abrirMenupop() {
-	  $('#menupop').show('slow').mouseleave(function() {
-	  	fecharMenupop();
-	  });
+	 $('#menupop').show('slow').mouseleave(function() {
+	 	fecharMenupop();
+	 });
 	}
 	
 	function fecharMenupop() {
 	  if ($("#menupop").is(":visible")) {
-	  	$('#menupop').hide('slow');
-	  }
+	 	$('#menupop').hide('slow');
+	 }
 	}
 
 	function fecharPesquisa() {
@@ -167,36 +165,37 @@ function ocultarMenu() {
 	
 
 	function localeData_pt_br() {
-    PrimeFaces.locales['pt'] = {
-        closeText : 'Fechar',
-        prevText : 'Anterior',
-        nextText : 'Próximo', 
-        currentText : 'Começo', 
-        monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 
-                'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
-                'Dezembro' ],
-        monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul',
-                'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-        dayNames : [ 'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 
-                'Sexta-feira', 'Sábado' ], 
-        dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ], 
-        dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
-        weekHeader : 'Semana',
-        firstDay : 0,
-        isRTL : false,
-        showMonthAfterYear : false,
-        yearSuffix : '',
-        timeOnlyTitle : 'Só Horas', 
-        timeText : 'Hora', 
-        hourText : 'Hora',
-        minuteText : 'Minuto',
-        secondText : 'Segundo',
-        ampm : false,
-        month : 'Mês', 
-        week : 'Semana',
-        day : 'Dia',
-        allDayText : 'Todo o Dia'
-    };
+        // Objeto de localização PrimeFaces. Já estava correto.
+	 PrimeFaces.locales['pt'] = {
+	     closeText : 'Fechar',
+	     prevText : 'Anterior',
+	     nextText : 'Próximo',
+	     currentText : 'Começo',
+	     monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+	             'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
+	             'Dezembro' ],
+	     monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul',
+	             'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+	     dayNames : [ 'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira',
+	             'Sexta-feira', 'Sábado' ],
+	     dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+	     dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+	     weekHeader : 'Semana',
+	     firstDay : 0,
+	     isRTL : false,
+	     showMonthAfterYear : false,
+	     yearSuffix : '',
+	     timeOnlyTitle : 'Só Horas',
+	     timeText : 'Hora',
+	     hourText : 'Hora',
+	     minuteText : 'Minuto',
+	     secondText : 'Segundo',
+	     ampm : false,
+	     month : 'Mês',
+	     week : 'Semana',
+	     day : 'Dia',
+	     allDayText : 'Todo o Dia'
+	 };
 }
 
 function validarCampoPesquisa(valor) {
@@ -211,10 +210,10 @@ function validarCampoPesquisa(valor) {
 
 /**
  * Carrega um array global com os ids de todos os componentes da pagina Para ter
- * faciliades em obtencao de valores dos componentes bem como trabalhar com ajax
+ * facilidades em obtencao de valores dos componentes bem como trabalhar com ajax
  */
 function carregarIdElementosPagina() {
-	 arrayIdsElementsPage = new Array;
+	 arrayIdsElementsPage = new Array(); // Melhor prática
 	 for (form = 0 ; form <= document.forms.length; form++){
 		 var formAtual = document.forms[form];
 		 if (formAtual != undefined) {
@@ -228,14 +227,13 @@ function carregarIdElementosPagina() {
 }
 /**
  * Retorno o valor do id do componente dentro do documento html passando como
- * parametro a descri��o do id declarada em jsf
- * 
- * @param id
+ * parametro a descrição do id declarada em jsf // CORRIGIDO: descrição
+ * * @param id
  */
 function getValorElementPorId(id) {
 	 carregarIdElementosPagina();
 	 for (i = 0; i< arrayIdsElementsPage.length; i++){
-		 var valor =  ""+arrayIdsElementsPage[i];
+		 var valor = ""+arrayIdsElementsPage[i];
 		 if (valor.indexOf(id) > -1) {
 			return valor;
 	}
@@ -244,10 +242,9 @@ function getValorElementPorId(id) {
 }
 
 /**
- * primefaces.js c�digo fonte
+ * primefaces.js código fonte
  * escapeClientId:function(a){return"#"+a.replace(/:/g,"\\:")}
- * 
- * @param id
+ * * @param id
  * @returns id
  */
 function getValorElementPorIdJQuery(id) {
@@ -261,8 +258,7 @@ function getValorElementPorIdJQuery(id) {
 
 /**
  * Adiciona foco ao campo passado como paramentro
- * 
- * @param campo
+ * * @param campo
  */
 function addFocoAoCampo(campo) {
 	var id = getValorElementPorId(campo);
@@ -276,8 +272,7 @@ function addFocoAoCampo(campo) {
  * 'java.lang.String'; var classTypeLong = 'java.lang.Long'; var classTypeDate =
  * 'java.util.Date'; var classTypeBoolean = 'java.lang.Boolean'; var
  * classTypeBigDecimal = 'java.math.BigDecimal';
- * 
- * @param elemento
+ * * @param elemento
  */
 function addMascaraPesquisa(elemento) {
 	var id = getValorElementPorIdJQuery('valorPesquisa');
@@ -286,7 +281,7 @@ function addMascaraPesquisa(elemento) {
 	var typeCampo = vals[1];
 	
 	$(id).unmask();
-	$(id).unbind("keypress"); 
+	$(id).unbind("keypress");
 	$(id).unbind("keyup");
 	$(id).unbind("focus");
 	$(id).val('');
@@ -296,7 +291,7 @@ function addMascaraPesquisa(elemento) {
 				$(id).keypress(permitNumber);
 			}
 			else if (typeCampo === classTypeBigDecimal) {	
-				$(id).maskMoney({precision:4, decimal:",", thousands:"."}); 
+				$(id).maskMoney({precision:4, decimal:",", thousands:"."});
 			}
 			else if (typeCampo === classTypeDate) {
 				$(id).mask('99/99/9999');
@@ -320,8 +315,7 @@ function permitirApenasNumero(id) {
 
 /**
  * Add bairro selecionado na tela de filial
- * 
- * @param objeto
+ * * @param objeto
  */
 function addBairroSelecionadoFilial(objeto) {
 	var bairroObj = JSON.parse(objeto);
@@ -332,8 +326,7 @@ function addBairroSelecionadoFilial(objeto) {
 
 /**
  * Add bairro selecionado na tela de funcionrio
- * 
- * @param objeto
+ * * @param objeto
  */
 function addBairroSelecionadoFunc(objeto) {
 	var bairroObj = JSON.parse(objeto);
@@ -344,8 +337,7 @@ function addBairroSelecionadoFunc(objeto) {
 
 /**
  * Add bairro seleiconado na tela de entidade
- * 
- * @param objeto
+ * * @param objeto
  */
 function addBairroSelecionadoEntidade(objeto) {
 	var bairroObj = JSON.parse(objeto);
@@ -356,8 +348,7 @@ function addBairroSelecionadoEntidade(objeto) {
 
 /**
  * add filial selecionada na tela de entidade
- * 
- * @param objeto
+ * * @param objeto
  */
 function addFilialSelecionadoEntidade(objeto) {
 	var filialObj = JSON.parse(objeto);
@@ -368,8 +359,7 @@ function addFilialSelecionadoEntidade(objeto) {
 
 /**
  * add filial selecionada na tela de funcionario
- * 
- * @param objeto
+ * * @param objeto
  */
 function addFilialSelecionadoFunc(objeto) {
 	var filialObj = JSON.parse(objeto);
@@ -387,8 +377,7 @@ function addFilialSelecionadoComissao(objeto) {
 
 /**
  * Add cidade selecionada na tela de filial
- * 
- * @param objeto
+ * * @param objeto
  */
 function addCidadeSelecionadoFilial(objeto) {
 	var cidadeObj = JSON.parse(objeto);
@@ -451,8 +440,7 @@ function addVendedorSelecionadoConstrutora(objeto) {
 
 /**
  * Add cidade selecionada na tela de entidade
- * 
- * @param objeto
+ * * @param objeto
  */
 function addCidadeSelecionadoEntidade(objeto) {
 	var cidadeObj = JSON.parse(objeto);
@@ -464,8 +452,7 @@ function addCidadeSelecionadoEntidade(objeto) {
 
 /**
  * Add cidade selecionada na tela de entidade
- * 
- * @param objeto
+ * * @param objeto
  */
 function addCidadeSelecionadoFunc(objeto) {
 	var cidadeObj = JSON.parse(objeto);
@@ -476,22 +463,21 @@ function addCidadeSelecionadoFunc(objeto) {
 
 /**
  * Pesquisa filial ao informar o id
- * 
- * @param id
+ * * @param id
  */
 function pesquisarFilialPerderFoco(id) {
 	if (id.trim() != '') {
 	 statusDialog.show();
 	 $("#fil_descricao").val('');
 	 $.get("findFilial?codFilial=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var filialObj = JSON.parse(resposta);
-	        	$("#fil_codigo").val(filialObj.fil_codigo);
-	        	$("#fil_descricao").val(validaDescricao(filialObj.fil_descricao));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var filialObj = JSON.parse(resposta);
+	         	$("#fil_codigo").val(filialObj.fil_codigo);
+	         	$("#fil_descricao").val(validaDescricao(filialObj.fil_descricao));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
@@ -502,14 +488,14 @@ function pesquisarResponsavelPerderFoco(id) {
 	 statusDialog.show();
 	 $("#responsavelNome").val('');
 	 $.get("findResponsavel?codResponsavel=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var respObj = JSON.parse(resposta);
-	        	$("#responsavelCodigo").val(respObj.ent_codigo);
-	        	$("#responsavelNome").val(validaDescricao(respObj.ent_nomefantasia));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var respObj = JSON.parse(resposta);
+	         	$("#responsavelCodigo").val(respObj.ent_codigo);
+	         	$("#responsavelNome").val(validaDescricao(respObj.ent_nomefantasia));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
@@ -518,22 +504,21 @@ function pesquisarResponsavelPerderFoco(id) {
 
 /**
  * Pesquisa bairro ao informar o id
- * 
- * @param id
+ * * @param id
  */
 function pesquisarBairroPerderFoco(id) {
 	if (id.trim() != '') {
 	 statusDialog.show();
 	 $("#bai_descricao").val('');
 	 $.get("findBairro?codBairro=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var bairroObj = JSON.parse(resposta);
-	        	$("#bai_codigo").val(bairroObj.bai_codigo);
-	        	$("#bai_descricao").val(validaDescricao(bairroObj.bai_descricao));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var bairroObj = JSON.parse(resposta);
+	         	$("#bai_codigo").val(bairroObj.bai_codigo);
+	         	$("#bai_descricao").val(validaDescricao(bairroObj.bai_descricao));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
@@ -543,14 +528,14 @@ function pesquisarConstrutoraPerderFoco2(id) {
 		 statusDialog.show();
 		 $("#descricaoConstrutora").val('');
 		 $.get("findConstrutora2?codConstrutora=" + id, function(resposta) {
-		        if (resposta != 'erro' && resposta.trim() != ''){
-		        	var entObj = JSON.parse(resposta);
-		        	$("#ent_codigo").val(entObj.ent_codigo);
-		        	$("#descricaoConstrutora").val(validaDescricao(entObj.ent_nomefantasia));
-		        }
-		   })
-		   .always(function() { 
-			   statusDialog.hide();
+		         if (resposta != 'erro' && resposta.trim() != ''){
+		         	var entObj = JSON.parse(resposta);
+		         	$("#ent_codigo").val(entObj.ent_codigo);
+		         	$("#descricaoConstrutora").val(validaDescricao(entObj.ent_nomefantasia));
+		         }
+		    })
+		    .always(function() {
+			     statusDialog.hide();
 			});
 		}
 }
@@ -560,14 +545,14 @@ function pesquisarConstrutoraPerderFoco(id) {
 		 statusDialog.show();
 		 $("#descricaoConstrutora").val('');
 		 $.get("findConstrutora?codConstrutora=" + id, function(resposta) {
-		        if (resposta != 'erro' && resposta.trim() != ''){
-		        	var entObj = JSON.parse(resposta);
-		        	$("#ent_codigo").val(entObj.ent_codigo);
-		        	$("#descricaoConstrutora").val(validaDescricao(entObj.ent_nomefantasia));
-		        }
-		   })
-		   .always(function() { 
-			   statusDialog.hide();
+		         if (resposta != 'erro' && resposta.trim() != ''){
+		         	var entObj = JSON.parse(resposta);
+		         	$("#ent_codigo").val(entObj.ent_codigo);
+		         	$("#descricaoConstrutora").val(validaDescricao(entObj.ent_nomefantasia));
+		         }
+		    })
+		    .always(function() {
+			     statusDialog.hide();
 			});
 		}
 }
@@ -577,14 +562,14 @@ function pesquisarVendedorPerderFoco(id) {
 		 statusDialog.show();
 		 $("#codigoVendedor").val('');
 		 $.get("findVendedor?codigoVendedor=" + id, function(resposta) {
-		        if (resposta != 'erro' && resposta.trim() != ''){
-		        	var entObj = JSON.parse(resposta);
-		        	$("#codigoVendedor").val(entObj.ent_codigo);
-		        	$("#descricaoVendedor").val(validaDescricao(entObj.ent_nomefantasia));
-		        }
-		   })
-		   .always(function() { 
-			   statusDialog.hide();
+		         if (resposta != 'erro' && resposta.trim() != ''){
+		         	var entObj = JSON.parse(resposta);
+		         	$("#codigoVendedor").val(entObj.ent_codigo);
+		         	$("#descricaoVendedor").val(validaDescricao(entObj.ent_nomefantasia));
+		         }
+		    })
+		    .always(function() {
+			     statusDialog.hide();
 			});
 		}
 }
@@ -595,14 +580,14 @@ function pesquisarUserDestinoPerderFoco(id) {
 	 statusDialog.show();
 	 $("#loginDestino").val('');
 	 $.get("findUserDestino?codEntidade=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var entidadeObj = JSON.parse(resposta);
-	        	$("#usr_destino").val(entidadeObj.ent_codigo);
-	        	$("#loginDestino").val(validaDescricao(entidadeObj.ent_login));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var entidadeObj = JSON.parse(resposta);
+	         	$("#usr_destino").val(entidadeObj.ent_codigo);
+	         	$("#loginDestino").val(validaDescricao(entidadeObj.ent_login));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
@@ -612,14 +597,14 @@ function pesquisarUserDestinoPerderFocoDialog(id) {
 	 statusDialog.show();
 	 $("#loginDestinoMsgDialog").val('');
 	 $.get("findUserDestino?codEntidade=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var entidadeObj = JSON.parse(resposta);
-	        	$("#usr_destinoMsgDialog").val(entidadeObj.ent_codigo);
-	        	$("#loginDestinoMsgDialog").val(validaDescricao(entidadeObj.ent_login));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var entidadeObj = JSON.parse(resposta);
+	         	$("#usr_destinoMsgDialog").val(entidadeObj.ent_codigo);
+	         	$("#loginDestinoMsgDialog").val(validaDescricao(entidadeObj.ent_login));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
@@ -630,14 +615,14 @@ function pesquisarFuncionarioComissaoPerdeFoco(id) {
 	 statusDialog.show();
 	 $("#ent_codigo").val('');
 	 $.get("findFuncComissao?codFuncionario=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var entidadeObj = JSON.parse(resposta);
-	        	$("#ent_codigo").val(entidadeObj.ent_codigo);
-	        	$("#loginDestino").val(validaDescricao(entidadeObj.ent_login));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var entidadeObj = JSON.parse(resposta);
+	         	$("#ent_codigo").val(entidadeObj.ent_codigo);
+	         	$("#loginDestino").val(validaDescricao(entidadeObj.ent_login));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
@@ -648,183 +633,171 @@ function pesquisarEntidadePerderFoco(id) {
 	 statusDialog.show();
 	 $("#loginDestino").val('');
 	 $.get("findEntidade?codEntidade=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var entidadeObj = JSON.parse(resposta);
-	        	$("#usr_destino").val(entidadeObj.ent_codigo);
-	        	$("#loginDestino").val(validaDescricao(entidadeObj.ent_login));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var entidadeObj = JSON.parse(resposta);
+	         	$("#usr_destino").val(entidadeObj.ent_codigo);
+	         	$("#loginDestino").val(validaDescricao(entidadeObj.ent_login));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
 
 /**
  * Pesquisa cidade ao perder o foco informando o id
- * 
- * @param id
+ * * @param id
  */
 function pesquisarCidadePerderFoco(id) {
 	if (id.trim() != '') {
 	 statusDialog.show();
 	 $("#cid_descricao").val('');
 	 $.get("findCidade?codCidade=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var cidadeObj = JSON.parse(resposta);
-	        	$("#cid_codigo").val(cidadeObj.cid_codigo);
-	        	$("#cid_descricao").val(validaDescricao(cidadeObj.cid_descricao));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
+	         if (resposta != 'erro' && resposta.trim() != ''){
+	         	var cidadeObj = JSON.parse(resposta);
+	         	$("#cid_codigo").val(cidadeObj.cid_codigo);
+	         	$("#cid_descricao").val(validaDescricao(cidadeObj.cid_descricao));
+	         }
+	    })
+	    .always(function() {
+		     statusDialog.hide();
 		});
 	}
 }
 
 /**
  * add bairro selecionado no funcionario sendo cadastrado
- * 
- * @param id
+ * * @param id
  */
 function addBairroFunc(id) {
 	if (id.trim() != '') {
 		 $.get("addBairroFunc?codBairro=" + id);
 	}
-} 
+}
 
 
 /**
  * add bairro selecionado a filial sendo cadastrado
- * 
- * @param id
+ * * @param id
  */
 function addBairroFilial(id) {
 	if (id.trim() != '') {
 		 $.get("addBairroFilial?codBairro=" + id);
 	}
-} 
+}
 
 
 function addDestinoMsg(id) {
 	if (id.trim() != '') {
 		 $.get("addDestinoMsg?codEntidade=" + id);
 	}
-} 
+}
 
 function addFuncComissao(id) {
 	if (id.trim() != '') {
 		 $.get("addFuncComissao?codEntidade=" + id);
 	}
-} 
+}
 
 
 function addConstrutoraEmpreendimento(id) {
 	if (id.trim() != '') {
 		 $.get("addConstrutoraEmpreendimento?codConstrutora=" + id);
 	}
-} 
+}
 
 
 function addConstrutoraVendedor(id) {
 	if (id.trim() != '') {
 		 $.get("addConstrutoraVendedor?codConstrutora=" + id);
 	}
-} 
+}
 
 function addVendedorContrutora(id) {
 	if (id.trim() != '') {
 		 $.get("addVendedorContrutora?codVendedor=" + id);
 	}
-} 
+}
 
 
 /**
  * Add bairro selecionado na entidade sendo cadastrada
- * 
- * @param id
+ * * @param id
  */
 function addBairroEntidade(id) {
 	if (id.trim() != '') {
 		 $.get("addBairroEntidade?codBairro=" + id);
 	}
-} 
+}
 
 
 /**
  * Add filial selecionada na entidade sendo cadastrada
- * 
- * @param id
+ * * @param id
  */
 function addFilialEntidade(id) {
 	if (id.trim() != '') {
 		 $.get("addFilialEntidade?codFilial=" + id);
 	}
-} 
+}
 
 
 function addResponsavelTitulo(id) {
 	if (id.trim() != '') {
 		 $.get("addResponsavelTitulo?codResponsavel=" + id);
 	}
-} 
-
+}
 
 
 /**
  * Add filial selecionada no funcionario sendo cadastrada
- * 
- * @param id
+ * * @param id
  */
 function addFilialFunc(id) {
 	if (id.trim() != '') {
 		 $.get("addFilialFunc?codFilial=" + id);
 	}
-} 
+}
 
 function addFilialComissao(id) {
 	if (id.trim() != '') {
 		 $.get("addFilialComissao?codFilial=" + id);
 	}
-} 
-
-
+}
 
 
 /**
  * Add cidade selecinada na filial sendo cadastrada
- * 
- * @param id
+ * * @param id
  */
 function addCidadeFilial(id) {
 	if (id.trim() != '') {
 		 $.get("addCidadeFilial?codCidade=" + id);
 	}
-} 
+}
 
 
 /**
  * Add cidade selecinada no funcionario sendo cadastrada
- * 
- * @param id
+ * * @param id
  */
 function addCidadeFunc(id) {
 	if (id.trim() != '') {
 		 $.get("addCidadeFunc?codCidade=" + id);
 	}
-} 
+}
 
 
 /**
  * Add cidade selecionada na entidade sendo cadastrada
- * 
- * @param id
+ * * @param id
  */
 function addCidadeEntidade(id) {
 	if (id.trim() != '') {
 		 $.get("addCidadeEntidade?codCidade=" + id);
 	}
-} 
+}
 
 function verificaMsgNaoLidas() {
 	 $.get("verificaMsgNaoLidas?isProcessoFacesJsf=false", function(resposta) {
@@ -836,8 +809,8 @@ function verificaMsgNaoLidas() {
 				$('#avisomensagem').hide();// esconde o icone de carta
 				$('#contadormensagem').html("&nbsp;");
 		 }
-	  }); 
-} 
+	 });
+}
 
 
 function alterarSenha(context) {
@@ -849,10 +822,10 @@ function alterarSenha(context) {
 function marcarDesmarcarLido(men_codigo, context) {
 	if (men_codigo != null && men_codigo != '') {
 	 $.get("marcarDesmarcarLido?men_codigo=" + men_codigo, function(resposta) {
-	   })
-	   .always(function() { 
-		   document.location = context + "/cadastro/msg_recebidas.jsf";
-	   });
+	    })
+	    .always(function() {
+		    document.location = context + "/cadastro/msg_recebidas.jsf";
+	    });
 	}
 	else {
 		alert("Selecione uma mensagem.");
@@ -861,10 +834,10 @@ function marcarDesmarcarLido(men_codigo, context) {
 
 function responderMsg(context, destino) {
 	 $.get("responderMsg?destino=" + destino, function(resposta) {
-	   })
-	   .always(function() { 
-		   document.location = context + "/cadastro/cad_mensagem.jsf";
-	   });
+	    })
+	    .always(function() {
+		    document.location = context + "/cadastro/cad_mensagem.jsf";
+	    });
 }
 
 function copiarValorFantasiaRazao(campo) {
@@ -882,10 +855,10 @@ function copiarValorFantasiaRazao(campo) {
 function confirmaLeituraMsg(men_codigo) {
 	
 	 $.get("confirmaLeituraMsg?men_codigo=" + men_codigo, function(resposta) {
-		 // alguma a��o aqui se precisar
+		 // alguma ação aqui se precisar // CORRIGIDO: ação
 		 reloadPage();
 		}).fail(function() {
-		    alert( "Erro ao enviar confirma��o de leitura da mensagem." );
+		     alert( "Erro ao enviar confirmação de leitura da mensagem." ); // CORRIGIDO: confirmação
 		});
 	
 }
@@ -901,19 +874,19 @@ function gerenciaTeclaEnter() {
 		});
 
 		$('input[type=text]').keydown(function(e) {
-			// Obter o pr�ximo �ndice do elemento de entrada de texto
+			// Obter o próximo índice do elemento de entrada de texto // CORRIGIDO: próximo índice
 			var next_idx = $('input[type=text]').index(this) + 1;
 
-			// Obter o n�mero de elemento de entrada de texto em um documento html
+			// Obter o número de elemento de entrada de texto em um documento html
 			var tot_idx = $('body').find('input[type=text]').length;
 
-			// Entra na tecla no c�digo ASCII
+			// Entra na tecla no código ASCII
 			if (e.keyCode === 13) {
 				if (tot_idx === next_idx)
-					// V� para o primeiro elemento de texto
+					// Vá para o primeiro elemento de texto // CORRIGIDO: Vá
 					$('input[type=text]:eq(0)').focus();
 				else
-					// V� para o elemento de entrada de texto seguinte
+					// Vá para o elemento de entrada de texto seguinte // CORRIGIDO: Vá
 					$('input[type=text]:eq(' + next_idx + ')').focus();
 			}
 		});
@@ -926,40 +899,38 @@ function processaDelete(e) {
 	 
 	/*
 	 * var rows = document.getElementsByTagName('tr');
-	 * 
-	 * for(var x = 0, xLength = rows.length; x < xLength; x++) {
-	 * 
-	 * alert('rowIndex=' + rows[x].rowIndex);
-	 *  }
+	 * * for(var x = 0, xLength = rows.length; x < xLength; x++) {
+	 * * alert('rowIndex=' + rows[x].rowIndex);
+	 * }
 	 */
 	
 	$(document).ready(function(){
 	     $("table>tbody>tr").each(function(index, elemento){
-	    	 
-	    	 var selecionado = $(this).attr('aria-selected'); 
-	    	 
-	    	 if(selecionado != undefined 
-	    			 && selecionado != 'undefined' 
-	    			 && selecionado === 'true' || selecionado === true){
-	    		 
-	    	
-	    		 //$(this).attr("onkeypress", "javascript:alert('kkk')");
-	    		// $(this).attr("onkeydown", "javascript:alert('kkk')");
-	    		 //$(this).attr("onkeyup", "javascript:alert('kkk')");
-	    		 //$(this).attr("ondblclick", "javascript:alert('kkk')");
-	    		 //alert($(this).attr('data-ri') + " - " + $(this).attr('data-rk')); 
-	    	 }
-//	         $(elemento).bind('click', function(){
-	             //$(this).css('background-color', 'red');
-	//         });
-	     });
+	 	 	
+	 	 	 var selecionado = $(this).attr('aria-selected');
+	 	 	
+	 	 	 if(selecionado != undefined
+	 	 			 && selecionado != 'undefined'
+	 	 			 && selecionado === 'true' || selecionado === true){
+	 	 		
+	 	 	
+	 	 		 //$(this).attr("onkeypress", "javascript:alert('kkk')");
+	 	 		// $(this).attr("onkeydown", "javascript:alert('kkk')");
+	 	 		 //$(this).attr("onkeyup", "javascript:alert('kkk')");
+	 	 		 //$(this).attr("ondblclick", "javascript:alert('kkk')");
+	 	 		 //alert($(this).attr('data-ri') + " - " + $(this).attr('data-rk'));
+	 	 	 }
+//	 	          $(elemento).bind('click', function(){
+	 	              //$(this).css('background-color', 'red');
+	//	 	          });
+	 	 });
 	});
 }
 
 function ocultaDataNacimento(value){
 	  if (value === 'TIPO_PESSOA_JURIDICA'){
 			
-			$("#labelDataNasc").hide(); 
+			$("#labelDataNasc").hide();
 			
 			var id = getValorElementPorIdJQuery('ent_datanascimento');
 			$("#ent_datanascimento").removeClass('calendar');
@@ -986,11 +957,11 @@ function ocultaDataNacimento(value){
 function invocaApplet(context) {
 	
 	   //Faz algo com ajax...
-	    
-		var url = context + "/applet/imprimir.jsp?impressoraImprimir=" + null;// passando null para pegar a padr�o
+	   
+		var url = context + "/applet/imprimir.jsp?impressoraImprimir=" + null;// passando null para pegar a padrão // CORRIGIDO: padrão
 		
 		var title = "Imprimindo...";
-		var w = "150"; 
+		var w = "150";
 		var h = "130";
 	    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
 	    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
@@ -998,13 +969,13 @@ function invocaApplet(context) {
 	    width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
 	    height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
 
-	    var left = ((width / 2) - (w / 2)) + dualScreenLeft;  
-	    var top = ((height / 2) - (h / 2)) + dualScreenTop;  
+	    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+	    var top = ((height / 2) - (h / 2)) + dualScreenTop;
 	    window.open(url, title, 'scrollbars=true, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 }
 
 function invocaAppletFileLocal(context) {
-	var url = context + "/applet/ler_file_local.jsp"; 
+	var url = context + "/applet/ler_file_local.jsp";
 
 	var title = "Lendo arquivo local...";
 	var w = "220";
@@ -1015,8 +986,8 @@ function invocaAppletFileLocal(context) {
     width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
     height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
 
-    var left = ((width / 2) - (w / 2)) + dualScreenLeft;  
-    var top = ((height / 2) - (h / 2)) + dualScreenTop;  
+    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+    var top = ((height / 2) - (h / 2)) + dualScreenTop;
     window.open(url, title, 'scrollbars=true, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 }
 
@@ -1051,7 +1022,6 @@ function executeApplet(context) {
  * Mostra erro do applet
  * @param erro
  */
-function erroApplet(erro) { 
+function erroApplet(erro) {
 	alert(erro);
 }
-
